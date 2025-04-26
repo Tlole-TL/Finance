@@ -3,24 +3,116 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Finance Tracker - Home</title>
-  <link rel="stylesheet" href="/static/homeStyle.css"/>
+  <title>Finance Tracker</title>
+  <link rel="stylesheet" href="/static/css/homeStyle.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div class="container">
-    <div class="nav-panel">
-      <h2>Finance</h2>
-      <button id="accountsBtn">Accounts</button>
-      <button id="dashboardBtn">Dashboard</button>
-      <button id="transactionsBtn">Transactions</button>
-      <button id="budgetsBtn">Budgets</button>
-    </div>
-    <div class="main-content" id="content">
-      <!-- content injected here -->
-    </div>
-  </div>
+  <nav class="nav-panel" role="tablist">
+    <h2>Finance</h2>
+    <button id="accountsBtn" role="tab" aria-controls="incomeSection">Accounts</button>
+    <button id="dashboardBtn" role="tab" aria-controls="dashboardSection">Dashboard</button>
+    <button id="transactionsBtn" role="tab" aria-controls="expenseSection">Transactions</button>
+    <button id="budgetsBtn" role="tab" aria-controls="budgetSection">Budgets</button>
+  </nav>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/static/homeScript.js"></script>
+  <main class="main-content">
+    <!-- Income Section -->
+    <section id="incomeSection" role="tabpanel" hidden>
+      <div class="incomeList">
+        <h2>Income</h2>
+        <label>Amount<input type="number" id="addIncome" min="0" step="0.01"/></label>
+        <label>Type<input type="text" id="incomeType"/></label>
+        <label>Frequency
+          <select id="incomeRecurrence">
+            <option>One-time</option><option>Weekly</option>
+            <option>Monthly</option><option>Yearly</option>
+          </select>
+        </label>
+        <label>Date<input type="date" id="incomeDate"/></label>
+        <label>Tags<input type="text" id="incomeTags" placeholder="comma separated"/></label>
+        <label>Notes<input type="text" id="incomeNote" placeholder="optional"/></label>
+        <button id="addIncomeBtn">Add Income</button>
+      </div>
+      <input type="text" id="incomeFilter" placeholder="Filter incomes by tag"/>
+      <div class="incomeListContainer"></div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboardSection" role="tabpanel" hidden>
+      <h2>Dashboard</h2>
+      <div class="dashboardStats">
+        <p>Total Income: $<span id="totalIncome">0.00</span></p>
+        <p>Total Expenses: $<span id="totalExpenses">0.00</span></p>
+        <p>Remaining: $<span id="remainingIncome">0.00</span></p>
+      </div>
+      <h3>Recent Transactions</h3>
+      <ul id="recentTransactions"></ul>
+      <h3>Income vs. Expenses Over Time</h3>
+      <canvas id="dashboardLineChart"></canvas>
+      <h3>Spending by Category</h3>
+      <canvas id="categoryPieChart"></canvas>
+      <h3>Monthly Budget vs Actual Spend</h3>
+      <canvas id="monthlyBarChart"></canvas>
+      <div id="insightsContainer"></div>
+    </section>
+
+    <!-- Expense Section -->
+    <section id="expenseSection" role="tabpanel" hidden>
+      <div class="incomeList">
+        <h2>Expense</h2>
+        <label>Amount<input type="number" id="addExpense" min="0" step="0.01"/></label>
+        <label>Category
+          <select id="expenseCategory"></select>
+        </label>
+        <label>Date<input type="date" id="expenseDate"/></label>
+        <label>Tags<input type="text" id="expenseTags" placeholder="comma separated"/></label>
+        <label>Notes<input type="text" id="expenseNote" placeholder="optional"/></label>
+        <label>Frequency
+          <select id="expenseRecurrence">
+            <option>One-time</option><option>Weekly</option>
+            <option>Monthly</option><option>Yearly</option>
+          </select>
+        </label>
+        <button id="addExpenseBtn">Add Expense</button>
+      </div>
+      <input type="text" id="expenseFilter" placeholder="Filter expenses by tag"/>
+      <div id="categoryManager">
+        <h3>Manage Categories</h3>
+        <button id="addCategoryBtn">Add Category</button>
+        <button id="renameCategoryBtn">Rename Category</button>
+        <button id="deleteCategoryBtn">Delete Category</button>
+      </div>
+      <div class="expenseListContainer"></div>
+    </section>
+
+    <!-- Budgets Section -->
+    <section id="budgetSection" role="tabpanel" hidden>
+      <h2>Budget Settings</h2>
+      <div class="budgetStats">
+        <p>Total Income: $<span id="budgetTotalIncome">0.00</span></p>
+        <p>Total Allocated: $<span id="budgetTotalAllocated">0.00</span></p>
+        <p>Remaining: $<span id="budgetRemaining">0.00</span></p>
+      </div>
+      <div class="budgetForm">
+        <h3>Allocate Your Budget</h3>
+        <div id="budgetInputsContainer">
+          <!-- Budget input fields will be dynamically injected here by budgets.js -->
+        </div>
+        <button id="saveBudgetBtn">Save Budgets</button>
+      </div>
+      <h2>Budget Overview</h2>
+      <div id="alertsContainer"></div>
+      <div class="budgetChartContainer">
+        <canvas id="budgetPieChart"></canvas>
+        <canvas id="budgetLineChart"></canvas>
+      </div>
+      <button id="resetBtn">Reset All Data</button>
+    </section>
+  </main>
+
+  <!-- Modules -->
+  <script type="module" src="/static/js/homeScript.js"></script>
+  <script type="module" src="/static/js/budgets.js"></script>
 </body>
 </html>
