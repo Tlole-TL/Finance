@@ -1,12 +1,16 @@
+/* homeStyle.css */
+
+/* Theme variables */
 :root {
-  --accent: #00ffd9;  /* Light blue for accents */
-  --bg-panel: rgba(10, 10, 10, 0.95);  /* Dark background for the panel */
-  --text-light: #fff;  /* Light text color */
-  --bg-dark: rgba(0, 0, 0, 0.85);  /* Darker background for general content */
-  --highlight: #32cd32;  /* Highlight color */
-  --bg-dark-card: rgba(0, 0, 0, 0.75);  /* Darker background for card sections */
+  --accent: #00ffd9;
+  --bg-panel: rgba(10, 10, 10, 0.95);
+  --text-light: #fff;
+  --bg-dark: rgba(0, 0, 0, 0.85);
+  --highlight: #32cd32;
+  --bg-dark-card: rgba(0, 0, 0, 0.75);
 }
 
+/* Global */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -17,6 +21,7 @@ body {
   min-height: 100vh;
 }
 
+/* Nav Panel */
 .nav-panel {
   position: fixed;
   width: 200px;
@@ -27,13 +32,11 @@ body {
   display: flex;
   flex-direction: column;
 }
-
 .nav-panel h2 {
   color: var(--accent);
   margin-bottom: 30px;
   text-shadow: 2px 2px 5px #000;
 }
-
 .nav-panel button {
   background: linear-gradient(to right, #222, #444);
   border: 2px solid var(--accent);
@@ -46,7 +49,6 @@ body {
   width: 100%;
   transition: 0.3s;
 }
-
 .nav-panel button.active,
 .nav-panel button:hover {
   background: var(--accent);
@@ -54,6 +56,7 @@ body {
   box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
 }
 
+/* Main Content */
 .main-content {
   margin-left: 200px;
   padding: 20px;
@@ -61,18 +64,18 @@ body {
   overflow-y: auto;
   background: rgba(255, 255, 255, 0.1);
 }
-
 section {
   max-width: 800px;
   margin: 20px auto;
   padding: 25px;
-  background: rgba(0, 0, 0, 0.6);  /* Darker background for content sections */
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   box-shadow: 0 6px 20px rgba(0, 255, 217, 0.15);
   backdrop-filter: blur(4px);
   border: 1px solid var(--accent);
 }
 
+/* Forms & Lists */
 .incomeList, .budgetForm, #categoryManager {
   display: flex;
   flex-wrap: wrap;
@@ -80,16 +83,14 @@ section {
   align-items: flex-start;
   margin-bottom: 20px;
 }
-
 .incomeList label, .budgetField label {
   display: flex;
   flex-direction: column;
   flex: 1 1 140px;
   font-size: 15px;
-  color: #ccffcc;  /* Light text for labels */
+  color: #ccffcc;
   font-weight: bold;
 }
-
 .incomeList input, .incomeList select,
 .budgetField input, .budgetField select {
   padding: 10px;
@@ -102,7 +103,6 @@ section {
   box-sizing: border-box;
   transition: border 0.2s, background 0.2s;
 }
-
 .incomeList input:focus,
 .budgetField input:focus,
 .incomeList select:focus,
@@ -112,6 +112,7 @@ section {
   outline: none;
 }
 
+/* Buttons */
 button {
   padding: 10px 16px;
   border: none;
@@ -122,24 +123,22 @@ button {
   cursor: pointer;
   transition: background 0.2s;
 }
-
 button:hover {
   background: #00e6c2;
 }
 
+/* Lists */
 .incomeListContainer, .expenseListContainer {
   margin-top: 20px;
 }
-
 .incomeItem {
-  background: rgba(0, 0, 0, 0.55); /* Darker background for items */
+  background: rgba(0, 0, 0, 0.55);
   padding: 12px;
   margin: 10px 0;
   border-radius: 6px;
   color: var(--text-light);
   border-left: 4px solid var(--accent);
 }
-
 .tag {
   background: var(--accent);
   color: #000;
@@ -149,21 +148,52 @@ button:hover {
   font-size: 13px;
 }
 
-.dashboardStats p,
-.budgetStats p {
-  font-size: 17px;
-  margin: 10px 0;
+/* Dashboard */
+.dashboardStats {
+  background: var(--bg-dark-card);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+.dashboardStats p {
   color: #e0e0e0;
-  line-height: 1.6;
+  font-size: 18px;
+  margin: 8px 0;
+}
+.dashboardStats .total {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--accent);
+}
+.dashboardStats .recentTransactions {
+  background: var(--bg-dark);
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 15px;
+}
+.dashboardStats .recentTransactions ul {
+  list-style: none;
+  padding: 0;
+}
+.dashboardStats .recentTransactions li {
+  color: #e0e0e0;
+  font-size: 16px;
+  margin-bottom: 10px;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 10px;
+  border-radius: 6px;
 }
 
-.budgetChartContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin-top: 20px;
+/* Inputs styling for recurrence/category */
+.incomeList select,
+.expenseList select,
+#incomeRecurrence,
+#expenseRecurrence {
+  background: rgba(0, 0, 0, 0.6) !important;
+  color: var(--text-light) !important;
 }
 
+/* Canvas */
 canvas {
   width: 100% !important;
   height: auto !important;
@@ -172,6 +202,7 @@ canvas {
   border-radius: 8px;
 }
 
+/* Alerts & Insights */
 .budgetAlert {
   background: #ffff88;
   color: #000;
@@ -181,9 +212,8 @@ canvas {
   font-weight: bold;
   box-shadow: 0 0 5px #d4ff00;
 }
-
 .insight {
-  background: rgba(0, 0, 0, 0.6); /* Even darker background for insights */
+  background: rgba(0, 0, 0, 0.6);
   padding: 10px;
   margin-top: 10px;
   border-radius: 4px;
@@ -191,95 +221,16 @@ canvas {
   color: #aef;
 }
 
-/* Adjust for Dashboard readability */
-.dashboardStats {
-  background: var(--bg-dark-card);
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-}
-
-.dashboardStats p {
-  color: #e0e0e0;
-  font-size: 18px;
-  margin: 8px 0;
-}
-
-.dashboardStats .total {
-  font-size: 22px;
-  font-weight: bold;
-  color: #00ffd9;
-}
-
-.dashboardStats .recentTransactions {
-  background: var(--bg-dark); /* Darkened for contrast */
-  padding: 15px;
-  border-radius: 6px;
-  margin-top: 15px;
-}
-
-.dashboardStats .recentTransactions ul {
-  list-style: none;
-  padding: 0;
-}
-
-.dashboardStats .recentTransactions li {
-  color: #e0e0e0;
-  font-size: 16px;
-  margin-bottom: 10px;
-  background: rgba(0, 0, 0, 0.65); /* Darker background for each item */
-  padding: 10px;
-  border-radius: 6px;
-}
-
-/* Category and Frequency Dropdowns */
-.incomeList select,
-.expenseList select,
-#incomeRecurrence,
-#expenseRecurrence {
-  background: rgba(0, 0, 0, 0.6) !important;
-  color: var(--text-light) !important;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .nav-panel {
-    position: static;
-    width: 100%;
-    flex-direction: row;
-  }
-
-  .nav-panel button {
-    flex: 1;
-    margin: 5px;
-  }
-
-  .main-content {
-    margin: 0;
-    margin-top: 60px;
-  }
-
-  section {
-    margin: 10px;
-    padding: 15px;
-  }
-
-  .dashboardStats .total {
-    font-size: 18px;
-  }
-}
-
 /* Budget Allocation Section */
 .budgetForm {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background: rgba(0, 0, 0, 0.65); /* Darker background for form */
+  background: rgba(0, 0, 0, 0.65);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
-
 .budgetForm h3 {
   color: var(--accent);
   font-size: 22px;
@@ -287,25 +238,21 @@ canvas {
   margin-bottom: 16px;
   text-shadow: 2px 2px 5px #000;
 }
-
 #budgetInputsContainer {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-
 .budgetField {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-
 .budgetField label {
   font-size: 15px;
-  color: #ccffcc;  /* Light text for labels */
+  color: #ccffcc;
   font-weight: bold;
 }
-
 .budgetField input, .budgetField select {
   padding: 10px;
   border-radius: 6px;
@@ -317,14 +264,12 @@ canvas {
   box-sizing: border-box;
   transition: border 0.2s, background 0.2s;
 }
-
 .budgetField input:focus,
 .budgetField select:focus {
   border-color: var(--highlight);
   background: rgba(0, 255, 217, 0.1);
   outline: none;
 }
-
 #saveBudgetBtn {
   padding: 12px 18px;
   border-radius: 6px;
@@ -335,15 +280,12 @@ canvas {
   transition: background 0.3s;
   margin-top: 16px;
 }
-
 #saveBudgetBtn:hover {
   background: #00e6c2;
 }
-
 #alertsContainer {
   margin-top: 20px;
 }
-
 .budgetChartContainer {
   display: flex;
   flex-direction: column;
@@ -351,13 +293,36 @@ canvas {
   margin-top: 20px;
 }
 
-.budgetAlert {
-  background: #ffff88;
-  color: #000;
-  padding: 10px;
-  margin-bottom: 12px;
-  border-radius: 5px;
-  font-weight: bold;
-  box-shadow: 0 0 5px #d4ff00;
+/* ==========================================================================
+   Save-Budget Button “flash” highlight
+   ========================================================================== */
+.saved-highlight {
+  background: var(--highlight) !important;
+  color: var(--text-light) !important;
+  box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Responsive */
+@media (max-width: 600px) {
+  .nav-panel {
+    position: static;
+    width: 100%;
+    flex-direction: row;
+  }
+  .nav-panel button {
+    flex: 1;
+    margin: 5px;
+  }
+  .main-content {
+    margin: 0;
+    margin-top: 60px;
+  }
+  section {
+    margin: 10px;
+    padding: 15px;
+  }
+  .dashboardStats .total {
+    font-size: 18px;
+  }
+}

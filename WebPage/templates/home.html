@@ -30,11 +30,9 @@
           </select>
         </label>
         <label>Date<input type="date" id="incomeDate"/></label>
-        <label>Tags<input type="text" id="incomeTags" placeholder="comma separated"/></label>
         <label>Notes<input type="text" id="incomeNote" placeholder="optional"/></label>
         <button id="addIncomeBtn">Add Income</button>
       </div>
-      <input type="text" id="incomeFilter" placeholder="Filter incomes by tag"/>
       <div class="incomeListContainer"></div>
     </section>
 
@@ -66,7 +64,6 @@
           <select id="expenseCategory"></select>
         </label>
         <label>Date<input type="date" id="expenseDate"/></label>
-        <label>Tags<input type="text" id="expenseTags" placeholder="comma separated"/></label>
         <label>Notes<input type="text" id="expenseNote" placeholder="optional"/></label>
         <label>Frequency
           <select id="expenseRecurrence">
@@ -76,7 +73,6 @@
         </label>
         <button id="addExpenseBtn">Add Expense</button>
       </div>
-      <input type="text" id="expenseFilter" placeholder="Filter expenses by tag"/>
       <div id="categoryManager">
         <h3>Manage Categories</h3>
         <button id="addCategoryBtn">Add Category</button>
@@ -96,22 +92,20 @@
       </div>
       <div class="budgetForm">
         <h3>Allocate Your Budget</h3>
-        <div id="budgetInputsContainer">
-          <!-- Budget input fields will be dynamically injected here by budgets.js -->
+        <div class="budgetInputsContainer">
+          <!-- Budget input fields will be dynamically injected here -->
         </div>
         <button id="saveBudgetBtn">Save Budgets</button>
       </div>
       <h2>Budget Overview</h2>
-      <div id="alertsContainer"></div>
       <div class="budgetChartContainer">
         <canvas id="budgetPieChart"></canvas>
-        <canvas id="budgetLineChart"></canvas>
+        <canvas id="monthlyBarChart"></canvas>
       </div>
       <button id="resetBtn">Reset All Data</button>
     </section>
   </main>
 
-  <!-- Modules -->
   <script type="module" src="/static/js/homeScript.js"></script>
   <script type="module" src="/static/js/budgets.js"></script>
 </body>
